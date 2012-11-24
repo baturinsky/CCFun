@@ -1,0 +1,37 @@
+if shell.getRunningProgram() == "disk/startup" then
+  print("Installing...")  
+
+  if fs.isDir("disk/install") then
+    local files = fs.list("disk/install")
+    for _,file in ipairs( files ) do 
+      print("disk/install/"..file.." -> "..file)
+      fs.delete(file)
+      fs.copy("disk/install/"..file,file)
+    end
+  else
+    print "No files to install. Put install files to directory 'disk/install'"
+  end
+
+  if not os.getComputerLabel("label") then
+    labelFile = fs.open("disk/label", "r")
+    if labelFile then
+      label = labelFile.readAll()
+      labelFile.close()
+      if label == "id" then
+        os.setComputerLabel(os.getComputerId())
+      else  
+        os.setComputerLabel(label)
+        label = string.gsub(label, '[0-9]+', function (x) return x+1 end)
+        labelFile = fs.open("disk/label", "w")
+        labelFile.write(label)
+        labelFile.close()
+      end
+      print("Set label to " .. os.getComputerLabel())
+    else
+      print "No label file. Put label to file 'disk/label'\nIt should contain number, that will be incremented each time"
+    end
+  end
+  print("Done!")
+else
+  print "Place a disk drive with floppy near computer and copy this program to disk/startup"
+end

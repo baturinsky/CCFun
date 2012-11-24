@@ -6,6 +6,24 @@ BSD
 
 ##Programs included
 
+###Legion
+
+Programm for mass installing programs on machines. Put this program on floppy as "startup", files that you need to install in disk/install and label for machines in disk/label.
+Label may be a string with number (then number will auto-increment) or "id" for labels based on innate machine id.
+Then just place machines by disk drive, and right-click on them.
+
+###Sfx
+This program makes a self-running archive from directory.
+For example:
+
+sfx disk disk.sfx
+
+then swap disk and
+
+disk.sfx disk
+
+to get exact copy of first disk
+
 ###Ex
 
 Program similar to default excavate, but 3x times better.

@@ -1,13 +1,17 @@
+sleep(1)
 while true do
- turtle.select(1)
- while not turtle.suckUp() do
-  sleep(1)
- end 
- if turtle.getItemCount(3)>0 then
-  while turtle.craft() do 
-   turtle.craft()
-   turtle.select(4)
-   turtle.dropDown()
-  end 
- end
+  turtle.select(4)
+  while turtle.getItemCount(4)>0 do    
+    while not turtle.drop() do 
+      sleep(1)
+    end      
+  end
+  turtle.select(4)
+  while not turtle.craft() do
+    turtle.select(1)
+    while not turtle.suckUp() do
+      sleep(1)  
+    end
+    turtle.select(4)
+  end  
 end
