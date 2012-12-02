@@ -5,16 +5,16 @@ if #tArgs ~= 2 then
 	return
 end
 
-sfxFiles = ""
-sfxDirs = ""
+local sfxFiles = ""
+local sfxDirs = ""
 
 root = tArgs[1] .. "/"
 
 function serDir(path)
-  print("dir  " .. root .. fpath)
-  files = fs.list(root .. path) 
+  print("dir  " .. root .. path)
+  local files = fs.list(root .. path) 
   for _,file in ipairs( files ) do 
-    fpath = path .. file    
+    local fpath = path .. file    
     if fs.isDir(root .. fpath) then
       sfxDirs = sfxDirs .. "\"" .. fpath .. "\",\n"
       serDir(fpath .. "/")
@@ -31,7 +31,7 @@ function serFile(fpath)
     print (root .. fpath .. " is too long, skipping")
   else  
     file = fs.open(root .. fpath, "r")
-    text = file.readAll()
+    local text = file.readAll()
     file.close()
     sfxFiles = sfxFiles .. "\"" .. fpath .. "\",\n\[=====\[" .. text .. "\]=====\]" .. ",\n"
   end
@@ -39,7 +39,7 @@ end
 
 serDir("")
 
-sfx = [[
+local sfx = [[
 local tArgs = { ... }
 
 if #tArgs ~= 1 then
@@ -47,20 +47,20 @@ if #tArgs ~= 1 then
 	return
 end
 
-root = tArgs[1] .. "/"
+local root = tArgs[1] .. "/"
 
-files = {
+local files = {
 ]] .. sfxFiles .. [[
 }
 
-dirs = {]] .. sfxDirs .. [[}
+local dirs = {]] .. sfxDirs .. [[}
 
 if not fs.isDir(tArgs[1]) then
   fs.makeDir(tArgs[1])
 end
 
 for _,dir in ipairs(dirs) do
-  fpath = root .. dir
+  local fpath = root .. dir
   print("dir " .. fpath)
   if not fs.isDir(fpath) then
     fs.makeDir(fpath)
@@ -70,15 +70,15 @@ end
 i = 1
 while i<#files do
   sleep(0.05)
-  fpath = root .. files[i]
-  data = files[i+1]
+  local fpath = root .. files[i]
+  local data = files[i+1]
   print("file " .. fpath)
-  file = fs.open(fpath, "w")
+  local file = fs.open(fpath, "w")
   file.write(data)
   file.close()
   i = i+2
 end]]
 
-file = fs.open(tArgs[2],"w")
+local file = fs.open(tArgs[2],"w")
 file.write(sfx)
 file.close()

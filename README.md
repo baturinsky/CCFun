@@ -8,21 +8,24 @@ BSD
 
 ###Legion
 
-Programm for mass installing programs on machines. Put this program on floppy as "startup", files that you need to install in disk/install and label for machines in disk/label.
+Program for mass installing programs on machines. Put this program on floppy as "startup", files that you need to install in disk/install and label for machines in disk/label.
 Label may be a string with number (then number will auto-increment) or "id" for labels based on innate machine id.
 Then just place machines by disk drive, and right-click on them.
 
 ###Sfx
-This program makes a self-running archive from directory.
+This program makes a self-extracting archive from a directory, to make sharing by pastebin easier.
+
 For example:
 
 sfx disk disk.sfx
+pastebin put disk.sfx
 
-then swap disk and
+Then on some other computer on some other server:
 
+pastebin get D0YXE0qX disk.sfx
 disk.sfx disk
 
-to get exact copy of first disk
+to get exact copy of the first disk
 
 ###Ex
 
