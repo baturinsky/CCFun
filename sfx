@@ -16,8 +16,10 @@ function serDir(path)
   for _,file in ipairs( files ) do 
     local fpath = path .. file    
     if fs.isDir(root .. fpath) then
-      sfxDirs = sfxDirs .. "\"" .. fpath .. "\",\n"
-      serDir(fpath .. "/")
+      if string.sub(fpath, 1, 5) ~= '.git' then
+        sfxDirs = sfxDirs .. "\"" .. fpath .. "\",\n"
+        serDir(fpath .. "/")
+      end
     else
       serFile(fpath)
     end
