@@ -45,7 +45,7 @@ local sfx = [[
 local tArgs = { ... }
 
 if #tArgs ~= 1 then
-	print( "Usage= ]] .. tArgs[2] ..  [[ <dir>" )
+	print( "Usage= " .. shell.getRunningProgram() .. " <dir>" )
 	return
 end
 
