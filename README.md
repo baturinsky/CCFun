@@ -25,13 +25,13 @@ Created file is a program, that takes one argument - target directory.
 
 For example:
 
-   sfx disk disk.sfx
-   pastebin put disk.sfx
+  sfx disk disk.sfx
+  pastebin put disk.sfx
 
 Then on some other computer on some other server:
 
-   pastebin get D0YXE0qX disk.sfx
-   disk.sfx disk
+  pastebin get D0YXE0qX disk.sfx
+  disk.sfx disk
 
 to get exact copy of the first disk
 
@@ -41,11 +41,11 @@ This program id similar to default digging program "excavate", but is up to 3x t
 
 Controls:
 
-   ex f4r5d6 - excavate block 4 (f)orward, 5 (r)ight and 6 (d)own
+  ex f4r5d6 - excavate block 4 (f)orward, 5 (r)ight and 6 (d)own
 
-   ex back, ex right, ex left - turn turtle
+  ex back, ex right, ex left - turn turtle
 
-   ex x1y2z-3 - move relative to starting point
+  ex x1y2z-3 - move relative to starting point
 
 Put fuel in first row
 You can put junk (dirt, cobble, etc) specimens in second row, then they will be disposed in stacks of 60. Saves fuel, time and storage space.
